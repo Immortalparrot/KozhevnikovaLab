@@ -80,14 +80,12 @@ Rel(blog_service, db, "INSERT/SELECT/UPDATE", "SQL")
 
 ### Модель данных
 ```puml
-@startuml
-
-class route {
+@startuml name1
+class Route {
   id
-  name
-  starting_point
-  end_point
-  description
+  departure_point
+  destination
+  date_trip
   date
   author_id
 }
@@ -101,28 +99,16 @@ class User {
   title
 }
 
-class trip {
+class Trip {
   id
   author_id
-  route_id
-  departure_date
-  available_seats
-  description
-  date_of_creation
-  
+  route
+  date_trip
+  date
 }
 
-class passengers {
- trip_id
- user_id
-
-}
-
-
-User <- route
-trip <- route
-passengers -> User
-passengers -> trip
+User -> Route
+Route -> Trip
 
 @enduml
 ```
